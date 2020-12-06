@@ -1,0 +1,28 @@
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light ">
+    <div  class="flex-grow-1">
+        <a aria-label="Home" class="logo" routerLink="/">
+            
+                
+                  <span class="logo-text">Discussion Board</span>
+        </a>
+        
+    </div>
+    <div *ngIf="!userLoggedIn" class="flex-grow-1">
+        <div>
+            <a routerLink="/signup" class="float-right signup mr-2">Signup</a>
+            <a routerLink="/login" class="float-right login mr-2">Login</a>
+        </div>
+    </div>
+
+    <div *ngIf="userLoggedIn" class="flex-grow-1">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profile<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><button class="login" (click)="showProfile()">Manage Profile</button></li>
+              <li><button class="login" (click)="logout()">Logout</button></li>
+            </ul>
+          </div>
+    </div>
+    </nav>
+</header>

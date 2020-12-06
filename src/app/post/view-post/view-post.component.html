@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+<div class="view-post-header">
+    
+    <div class="card"  *ngIf="post">
+        <div class="card-body">
+            <div class="card-title">
+                <h2>{{post.postName}}</h2>
+            </div>
+            <div class="card-text" [innerHtml]="post.description">
+                
+            </div>
+            <div class="card-footer">
+                Posted by : {{post.userName}} at {{post.duration | date:"medium"}}
+                
+            </div>
+        </div>
+    </div>
+    <div style="padding-top: 10px;">
+    <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+        <textarea name='commentText' [formControlName]="'commentText'" placeholder="You can comment here" rows=5 cols=50 required minlength="4"></textarea>
+
+        <button   type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+
+    </div>
+    
+    <a *ngIf="post" class="btnCommments" type="button">
+        <fa-icon [icon]="faComments"></fa-icon> 
+         Comments({{post.commentCount}})
+    </a>
+   <div *ngFor="let comment of comments">
+       <app-comments [comment]="comment"></app-comments>
+    </div>
+</div>
+        </div>
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+        <app-sub-sidebar></app-sub-sidebar>
+    </div>
+</div>
+</div>

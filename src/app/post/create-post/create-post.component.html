@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div class="create-post">
+    <form class="post-form" [formGroup]="createPostForm" (submit)=createPost()>
+      <div class="form-group">
+        <div class="create-post-heading">Create Post</div>
+        <input class="form-control" type="text" [formControlName]="'postName'" name="postName"
+          style="margin-bottom: 20px;" placeholder="Name" />
+        <select [formControlName]="'selectedtopic'">
+          <option selected disabled>Select the topic</option>
+          <option *ngFor="let topic of topics" [ngValue]='topic.name'>{{topic.name}}</option>
+        </select>
+        <editor [formControlName]="'description'" name="description" [init]="{
+      height: 500,
+      menubar: false,
+      plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table paste code help wordcount'
+      ],
+      toolbar:
+        'undo redo | formatselect | bold italic backcolor | \
+        alignleft aligncenter alignright alignjustify | \
+        bullist numlist outdent indent | removeformat | help'
+    }"></editor>
+        <button style="margin-top: 10px" type="submit" class="btn btn-primary">Create Post</button>
+
+      </div>
+    </form>
+  </div>
+</div>
